@@ -11,7 +11,7 @@ const categories = require('./data/categories.json');
 const news = require('./data/news.json');
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Dragon is Running....')
   })
 
 app.get('/categories', (req, res) => {
