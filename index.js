@@ -1,9 +1,17 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+
 const port = process.env.PORT || 5000;
 
 app.use(cors())
+
+const corsOptions = {
+  origin: 'http://localhost:5173',  // Your frontend development origin
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
 
 const categories = require('./data/categories.json');
 const news = require('./data/news.json');
@@ -42,3 +50,4 @@ app.get('/categories/:id', (req, res) => {
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
   })
+
