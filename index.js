@@ -3,6 +3,24 @@ const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 
+//language add
+const i18n = require('./i18n'); // Import i18n configuration
+const middleware = require('i18next-http-middleware');
+
+// Initialize the i18next middleware
+app.use(middleware.handle(i18n));
+
+// API endpoint to serve translated content
+app.get('/api/translate', (req, res) => {
+    const welcome = req.t('welcome'); // Use i18next's t() function to get the translation
+    const description = req.t('description');
+    
+    res.json({
+      welcome,
+      description
+    });
+  });
+
 const categories = require('./data/categories.json');
 const news = require('./data/news.json');
 
